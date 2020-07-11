@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scientist.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bot.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/bg_02.jpg" type="Texture" id=6]
 [ext_resource path="res://CharacterSwitcher.gd" type="Script" id=7]
 [ext_resource path="res://assets/FG.png" type="Texture" id=8]
+[ext_resource path="res://Overlays.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 180.569, 32.2353 )
@@ -66,7 +67,6 @@ position = Vector2( 952.884, 0 )
 position = Vector2( 1118.47, 0 )
 
 [node name="Consoles" type="Node2D" parent="."]
-visible = false
 
 [node name="Console" parent="Consoles" instance=ExtResource( 4 )]
 position = Vector2( 117.468, 84.9259 )
@@ -101,7 +101,6 @@ collision_mask = 4
 script = ExtResource( 7 )
 
 [node name="BotObstacles" type="Node2D" parent="."]
-visible = false
 
 [node name="Floor" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 180.887, 574.85 )
@@ -231,3 +230,25 @@ centered = false
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Overlays" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="LeftOverlay" type="ColorRect" parent="Overlays"]
+margin_right = 374.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightOverlay" type="ColorRect" parent="Overlays"]
+visible = false
+margin_left = 374.0
+margin_right = 1200.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
