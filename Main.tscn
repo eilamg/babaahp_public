@@ -3,7 +3,7 @@
 [ext_resource path="res://Scientist.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Console.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/robo_concept1.jpg" type="Texture" id=5]
+[ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://assets/bg_02.png" type="Texture" id=6]
 [ext_resource path="res://CharacterSwitcher.gd" type="Script" id=7]
 [ext_resource path="res://assets/FG.png" type="Texture" id=8]
@@ -312,17 +312,27 @@ shape = SubResource( 10 )
 position = Vector2( 94.5288, -1.12253 )
 shape = SubResource( 10 )
 
-[node name="Collision4" type="CollisionShape2D" parent="Spikes"]
-position = Vector2( 264.029, -1.12253 )
-shape = SubResource( 10 )
-[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+rotating = true
+current = true
+script = ExtResource( 5 )
+max_offset = Vector2( 10, 10 )
+max_roll = 0.01
 [connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="timeout" from="Crushers/Timer" to="Crushers" method="_on_Timer_timeout"]
+[connection signal="ground_hit" from="Crushers/Crusher" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher" to="Scientist" method="_on_Crusher_killbox_hit"]
+[connection signal="ground_hit" from="Crushers/Crusher2" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher2" to="Scientist" method="_on_Crusher_killbox_hit"]
+[connection signal="ground_hit" from="Crushers/Crusher3" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher3" to="Scientist" method="_on_Crusher_killbox_hit"]
+[connection signal="ground_hit" from="Crushers/Crusher4" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher4" to="Scientist" method="_on_Crusher_killbox_hit"]
+[connection signal="ground_hit" from="Crushers/Crusher5" to="Camera" method="_on_Crusher_ground_hit"]
+[connection signal="killbox_hit" from="Crushers/Crusher5" to="Scientist" method="_on_Crusher_killbox_hit"]
 [connection signal="body_entered" from="Elevators/Elevator" to="Bot" method="_on_entered_elevator"]
 [connection signal="body_exited" from="Elevators/Elevator" to="Bot" method="_on_exited_elevator"]
 [connection signal="body_entered" from="Elevators/Elevator2" to="Bot" method="_on_entered_elevator"]
