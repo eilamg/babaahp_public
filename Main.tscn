@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scientist.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bot.tscn" type="PackedScene" id=2]
@@ -11,15 +11,17 @@
 [ext_resource path="res://Overlays.gd" type="Script" id=9]
 [ext_resource path="res://Crushers.gd" type="Script" id=10]
 [ext_resource path="res://Main.gd" type="Script" id=11]
+[ext_resource path="res://Elevator.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 180, 32 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 143, 20 )
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 12.1095
+height = 308.269
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 143, 20 )
+[sub_resource type="CapsuleShape2D" id=12]
+height = 281.89
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 442, 300 )
@@ -44,6 +46,9 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
+
+[node name="CharacterSwitcher" type="Node" parent="."]
+script = ExtResource( 7 )
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -107,9 +112,6 @@ position = Vector2( 35.7914, 304.445 )
 collision_mask = 4
 speed = 500
 
-[node name="CharacterSwitcher" type="Node" parent="."]
-script = ExtResource( 7 )
-
 [node name="BotObstacles" type="Node2D" parent="."]
 visible = false
 
@@ -125,7 +127,7 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Floor2" type="StaticBody2D" parent="BotObstacles"]
-position = Vector2( 143, 370 )
+position = Vector2( 126.436, 361.536 )
 collision_layer = 4
 collision_mask = 0
 __meta__ = {
@@ -133,7 +135,8 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/Floor2"]
-shape = SubResource( 2 )
+rotation = 1.5708
+shape = SubResource( 11 )
 
 [node name="Floor3" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 216, 183 )
@@ -144,7 +147,9 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/Floor3"]
-shape = SubResource( 3 )
+position = Vector2( -2.5, -9.5 )
+rotation = 1.5708
+shape = SubResource( 12 )
 
 [node name="RightEdge" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 800, 300 )
@@ -215,35 +220,20 @@ __meta__ = {
 [node name="Collision" type="CollisionShape2D" parent="ScientistObstacles/RightEdge"]
 shape = SubResource( 9 )
 
-[node name="PrototypeTODO" type="Label" parent="."]
-visible = false
-margin_left = 1325.06
-margin_top = 99.5261
-margin_right = 1500.06
-margin_bottom = 164.526
-rect_scale = Vector2( 4, 4 )
-text = "two characters w/ toggle
-crashers
-ladders
-console without interaction"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Elevators" type="Node2D" parent="."]
 
-[node name="Concept" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 5 )
-centered = false
+[node name="Elevator" parent="Elevators" instance=ExtResource( 12 )]
+position = Vector2( 321.274, 377.971 )
 
-[node name="Foreground" type="Sprite" parent="."]
-texture = ExtResource( 8 )
-centered = false
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Elevator2" parent="Elevators" instance=ExtResource( 12 )]
+position = Vector2( 35.6942, 190.259 )
 
 [node name="Overlays" type="Node2D" parent="."]
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="LeftOverlay" type="ColorRect" parent="Overlays"]
 margin_right = 374.0
@@ -262,5 +252,41 @@ color = Color( 0, 0, 0, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="Crushers/Timer" to="Crushers" method="_on_Timer_timeout"]
+
+[node name="Foreground" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PrototypeTODO" type="Label" parent="."]
+visible = false
+margin_left = 1325.06
+margin_top = 99.5261
+margin_right = 1500.06
+margin_bottom = 164.526
+rect_scale = Vector2( 4, 4 )
+text = "two characters w/ toggle
+crashers
+ladders
+console without interaction"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Concept" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 [connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
+[connection signal="timeout" from="Crushers/Timer" to="Crushers" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Elevators/Elevator" to="Bot" method="_on_entered_elevator"]
+[connection signal="body_exited" from="Elevators/Elevator" to="Bot" method="_on_exited_elevator"]
+[connection signal="body_entered" from="Elevators/Elevator2" to="Bot" method="_on_entered_elevator"]
+[connection signal="body_exited" from="Elevators/Elevator2" to="Bot" method="_on_exited_elevator"]
