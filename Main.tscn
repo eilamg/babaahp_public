@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scientist.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bot.tscn" type="PackedScene" id=2]
@@ -7,6 +7,27 @@
 [ext_resource path="res://assets/robo_concept1.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/bg_01.jpg" type="Texture" id=6]
 [ext_resource path="res://CharacterSwitcher.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 180.569, 11.6631 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 142.948, 21.2451 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 142.948, 21.2451 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 404.936, 21.2451 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 17.257, 300 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 20, 300 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 200, 20 )
 
 [node name="Main" type="Node2D"]
 
@@ -20,19 +41,19 @@ __meta__ = {
 [node name="Crushers" type="Node2D" parent="."]
 
 [node name="Crusher" parent="Crushers" instance=ExtResource( 3 )]
-position = Vector2( 469.341, -57.0766 )
+position = Vector2( 469.341, 192.923 )
 
 [node name="Crusher2" parent="Crushers" instance=ExtResource( 3 )]
-position = Vector2( 630.074, -143.997 )
+position = Vector2( 627.696, 106.003 )
 
 [node name="Crusher3" parent="Crushers" instance=ExtResource( 3 )]
-position = Vector2( 792.217, -246.725 )
+position = Vector2( 792.217, 3.275 )
 
 [node name="Crusher4" parent="Crushers" instance=ExtResource( 3 )]
-position = Vector2( 952.884, -181.051 )
+position = Vector2( 952.884, 68.949 )
 
 [node name="Crusher5" parent="Crushers" instance=ExtResource( 3 )]
-position = Vector2( 1118.47, 272.331 )
+position = Vector2( 1118.47, 522.331 )
 
 [node name="Consoles" type="Node2D" parent="."]
 
@@ -65,6 +86,72 @@ position = Vector2( 35.7914, 304.445 )
 
 [node name="CharacterSwitcher" type="Node" parent="."]
 script = ExtResource( 7 )
+
+[node name="StaticObstacles" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="StaticObstacles"]
+position = Vector2( 177.468, 551.066 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="StaticObstacles/Floor"]
+shape = SubResource( 1 )
+
+[node name="Floor2" type="StaticBody2D" parent="StaticObstacles"]
+position = Vector2( 143.512, 367.203 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="StaticObstacles/Floor2"]
+shape = SubResource( 2 )
+
+[node name="Floor3" type="StaticBody2D" parent="StaticObstacles"]
+position = Vector2( 214.143, 174.909 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="StaticObstacles/Floor3"]
+shape = SubResource( 3 )
+
+[node name="Floor4" type="StaticBody2D" parent="StaticObstacles"]
+position = Vector2( 793.584, 541.311 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="StaticObstacles/Floor4"]
+shape = SubResource( 5 )
+
+[node name="ScreenDivider" type="StaticBody2D" parent="StaticObstacles"]
+position = Vector2( 376.19, 300 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="StaticObstacles/ScreenDivider"]
+shape = SubResource( 4 )
+
+[node name="LeftEdge" type="StaticBody2D" parent="StaticObstacles"]
+position = Vector2( -20, 300 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="StaticObstacles/LeftEdge"]
+shape = SubResource( 6 )
+
+[node name="TopEdge" type="StaticBody2D" parent="StaticObstacles"]
+position = Vector2( 170, -20 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="StaticObstacles/TopEdge"]
+shape = SubResource( 7 )
+
 [node name="PrototypeTODO" type="Label" parent="."]
 visible = false
 margin_left = 1325.06
