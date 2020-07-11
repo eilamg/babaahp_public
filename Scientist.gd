@@ -18,7 +18,7 @@ func _physics_process(delta):
             movement.x -= speed
         if Input.is_action_pressed("move_right"):
             movement.x += speed
-        if can_jump and Input.is_action_pressed("move_up"):
+        if can_jump and Input.is_action_just_pressed("move_up"):
             is_jumping = true
             movement.y = -jump_force
             $AnimatedSprite.play("jump")
