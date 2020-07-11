@@ -9,10 +9,6 @@ var movement = Vector2.ZERO
 var in_elevator = false
 
 
-func _ready():
-    CharacterSwitcher.connect("character_switched", self, "_on_character_switched")
-
-
 func _physics_process(delta):
     movement.x = 0
     if active:

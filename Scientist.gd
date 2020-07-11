@@ -9,9 +9,6 @@ export var jump_force = 1000
 var movement = Vector2.ZERO
 var can_jump = true
 
-func _ready():
-    CharacterSwitcher.connect("character_switched", self, "_on_character_switched")
-
 
 func _physics_process(delta):
     movement.x = 0
@@ -33,7 +30,7 @@ func _physics_process(delta):
         $Sprite.flip_h = false
     
     move_and_slide(movement, Vector2.UP)
-
+    
     if is_on_floor():
         can_jump = true
 

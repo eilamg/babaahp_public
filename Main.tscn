@@ -284,6 +284,8 @@ centered = false
 __meta__ = {
 "_edit_lock_": true
 }
+[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="timeout" from="Crushers/Timer" to="Crushers" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Elevators/Elevator" to="Bot" method="_on_entered_elevator"]
