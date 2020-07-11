@@ -6,6 +6,7 @@
 [ext_resource path="res://Console.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/robo_concept1.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/bg_01.jpg" type="Texture" id=6]
+[ext_resource path="res://CharacterSwitcher.gd" type="Script" id=7]
 
 [node name="Main" type="Node2D"]
 
@@ -62,6 +63,8 @@ position = Vector2( 795.151, 463.413 )
 [node name="Bot" parent="." instance=ExtResource( 2 )]
 position = Vector2( 35.7914, 304.445 )
 
+[node name="CharacterSwitcher" type="Node" parent="."]
+script = ExtResource( 7 )
 [node name="PrototypeTODO" type="Label" parent="."]
 visible = false
 margin_left = 1325.06
