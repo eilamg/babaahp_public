@@ -44,3 +44,8 @@ func _physics_process(delta):
 
 func _on_character_switched():
     active = not(active)
+
+
+func _on_Crusher_killbox_hit(body):
+    if body == self:
+        queue_free()
