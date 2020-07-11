@@ -3,21 +3,39 @@ extends KinematicBody2D
 
 export var active = true
 export var speed = 1000
+export var gravity = 100
+export var jump_force = 1000
 
+var movement = Vector2.ZERO
+var can_jump = true
 
 func _ready():
     CharacterSwitcher.connect("character_switched", self, "_on_character_switched")
 
 
 func _physics_process(delta):
-    var movement = Vector2.ZERO
+    movement.x = 0
     if active:
         if Input.is_action_pressed("move_left"):
-            movement += Vector2(-speed, 0)
+            movement.x -= speed
         if Input.is_action_pressed("move_right"):
-            movement += Vector2(speed, 0)
+            movement.x += speed
+        if can_jump and Input.is_action_pressed("move_up"):
+            movement.y = -jump_force
+            can_jump = false
 
-    move_and_slide(movement)
+    movement.y += gravity
+    movement.y = clamp(movement.y, -INF, 10000)
+    
+    if movement.x < 0:
+        $Sprite.flip_h = true
+    if movement.x > 0:
+        $Sprite.flip_h = false
+    
+    move_and_slide(movement, Vector2.UP)
+
+    if is_on_floor():
+        can_jump = true
 
 
 func _on_character_switched():
