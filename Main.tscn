@@ -20,13 +20,13 @@ extents = Vector2( 142.948, 21.2451 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 442, 300 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 20, 300 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 200, 20 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 404.936, 40 )
 
 [sub_resource type="RectangleShape2D" id=8]
@@ -88,19 +88,22 @@ position = Vector2( 117.468, 459.553 )
 position = Vector2( 209.537, 461.14 )
 
 [node name="Scientist" parent="." instance=ExtResource( 1 )]
-position = Vector2( 795.151, 463.413 )
+position = Vector2( 797.153, 467.795 )
+collision_mask = 2
 
 [node name="Bot" parent="." instance=ExtResource( 2 )]
 position = Vector2( 35.7914, 304.445 )
+collision_mask = 4
 
 [node name="CharacterSwitcher" type="Node" parent="."]
 script = ExtResource( 7 )
 
 [node name="BotObstacles" type="Node2D" parent="."]
-visible = false
 
 [node name="Floor" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 180.887, 574.85 )
+collision_layer = 4
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }
@@ -110,6 +113,8 @@ shape = SubResource( 1 )
 
 [node name="Floor2" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 143.512, 367.203 )
+collision_layer = 4
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }
@@ -119,6 +124,8 @@ shape = SubResource( 2 )
 
 [node name="Floor3" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 214.143, 174.909 )
+collision_layer = 4
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }
@@ -128,6 +135,8 @@ shape = SubResource( 3 )
 
 [node name="RightEdge" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 800, 300 )
+collision_layer = 4
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }
@@ -137,35 +146,43 @@ shape = SubResource( 4 )
 
 [node name="LeftEdge" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( -20, 300 )
+collision_layer = 4
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/LeftEdge"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="TopEdge" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 170, -20 )
+collision_layer = 4
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/TopEdge"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="ScientistObstacles" type="Node2D" parent="."]
 
 [node name="Floor" type="StaticBody2D" parent="ScientistObstacles"]
 position = Vector2( 800, 575 )
+collision_layer = 2
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Collision" type="CollisionShape2D" parent="ScientistObstacles/Floor"]
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="LeftEdge" type="StaticBody2D" parent="ScientistObstacles"]
 position = Vector2( 200, 300 )
+collision_layer = 2
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }
@@ -174,7 +191,9 @@ __meta__ = {
 shape = SubResource( 8 )
 
 [node name="RightEdge" type="StaticBody2D" parent="ScientistObstacles"]
-position = Vector2( 200, 300 )
+position = Vector2( 1250, 311.127 )
+collision_layer = 2
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true
 }

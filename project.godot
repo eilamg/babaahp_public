@@ -61,6 +61,11 @@ switch_character={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="scientist_obstacles"
+2d_physics/layer_3="bot_obstacles"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
