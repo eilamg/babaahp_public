@@ -1,39 +1,79 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/leg.png" type="Texture" id=1]
-[ext_resource path="res://Crusher.gd" type="Script" id=2]
-[ext_resource path="res://CrusherBody.gd" type="Script" id=3]
+[ext_resource path="res://assets/leg_drop/leg_00124.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 78, 251 )
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+
+func crush():
+    $AnimationPlayer.play(\"crush\")
+
+
+func _unhandled_input(event):
+    if event.is_action_pressed(\"ui_down\"):
+        crush()
+
+
+func _on_animation_finished(anim_name):
+    if anim_name == \"crush\":
+        $AnimationPlayer.play(\"return\")
+"
+
+[sub_resource type="Animation" id=1]
+resource_name = "crush"
+length = 4.17
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000359893, 0.47, 0.9, 1.45, 1.8, 4.17 ),
+"transitions": PoolRealArray( 1, 0.3, 0.4, 0.4, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 165 ), Vector2( 0, 4 ), Vector2( 0, 524 ), Vector2( 0, 524 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "return"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1.9, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 524 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 78, 20 )
+extents = Vector2( 69, 11.5 )
 
 [node name="Crusher" type="Node2D"]
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
-[node name="Zero" type="Position2D" parent="."]
-
-[node name="Primed" type="Position2D" parent="."]
-position = Vector2( 0, 80 )
-
-[node name="Crushed" type="Position2D" parent="."]
-position = Vector2( 0, 520 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/crush = SubResource( 1 )
+anims/return = SubResource( 4 )
 
 [node name="Body" type="StaticBody2D" parent="."]
-script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
 position = Vector2( 0, -253 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
-[node name="Collision" type="CollisionShape2D" parent="Body"]
+[node name="Collision" type="CollisionPolygon2D" parent="Body"]
 position = Vector2( 0, -253 )
-shape = SubResource( 1 )
+polygon = PoolVector2Array( -64.0707, 183.508, -64.9615, 259.235, 64.2188, 259.235, 63.3279, 182.617, 33.9282, -65.9435, 35.1352, -267.578, -44.5417, -265.199, -41.5036, -66.0912, -41.5036, -66.0912 )
 
 [node name="Killbox" type="Area2D" parent="Body"]
 
 [node name="Collision" type="CollisionShape2D" parent="Body/Killbox"]
 shape = SubResource( 2 )
-disabled = true
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
