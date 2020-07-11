@@ -1,9 +1,44 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 25.1595, 150 )
+extents = Vector2( 26, 150 )
 
 [node name="Elevator" type="Area2D"]
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Container" type="Control" parent="."]
+margin_left = -26.0
+margin_top = -150.0
+margin_right = 26.0
+margin_bottom = 150.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParticlesDown" type="CPUParticles2D" parent="Container"]
+position = Vector2( 26, 150 )
+amount = 32
+emission_shape = 2
+emission_rect_extents = Vector2( 26, 150 )
+spread = 0.0
+scale_amount = 1.2
+scale_amount_random = 1.0
+color = Color( 1, 0.968627, 0.270588, 0.501961 )
+hue_variation = 0.2
+hue_variation_random = 0.2
+
+[node name="ParticlesUP" type="CPUParticles2D" parent="Container"]
+position = Vector2( 26, 150 )
+rotation = 3.14159
+amount = 32
+emission_shape = 2
+emission_rect_extents = Vector2( 26, 150 )
+spread = 0.0
+scale_amount = 1.2
+scale_amount_random = 1.0
+color = Color( 1, 0.968627, 0.270588, 0.501961 )
+hue_variation = 0.2
+hue_variation_random = 0.2
