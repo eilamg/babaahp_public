@@ -11,7 +11,7 @@
 [ext_resource path="res://Overlays.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 180.569, 32.2353 )
+extents = Vector2( 180, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 142.948, 21.2451 )
@@ -103,7 +103,7 @@ script = ExtResource( 7 )
 [node name="BotObstacles" type="Node2D" parent="."]
 
 [node name="Floor" type="StaticBody2D" parent="BotObstacles"]
-position = Vector2( 180.887, 574.85 )
+position = Vector2( 180, 568 )
 collision_layer = 4
 collision_mask = 0
 __meta__ = {
@@ -225,6 +225,7 @@ texture = ExtResource( 5 )
 centered = false
 
 [node name="Foreground" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 8 )
 centered = false
 __meta__ = {
@@ -232,6 +233,7 @@ __meta__ = {
 }
 
 [node name="Overlays" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 9 )
 
 [node name="LeftOverlay" type="ColorRect" parent="Overlays"]
