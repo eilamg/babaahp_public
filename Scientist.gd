@@ -27,14 +27,12 @@ func _physics_process(delta):
     movement.y += gravity
     movement.y = clamp(movement.y, -INF, 10000)
     
-    if not(is_jumping):
-        if movement.x < 0:
+    if movement.x != 0:
+        $AnimatedSprite.flip_h = movement.x < 0
+        if not(is_jumping):
             $AnimatedSprite.play("run")
-            $AnimatedSprite.flip_h = true
-        if movement.x > 0:
-            $AnimatedSprite.play("run")
-            $AnimatedSprite.flip_h = false
-        if movement.x == 0:
+    else:
+        if not(is_jumping):
             $AnimatedSprite.play("idle")
             
     move_and_slide(movement, Vector2.UP)
