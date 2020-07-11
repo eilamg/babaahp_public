@@ -39,13 +39,17 @@ func crush():
     state = STATES.CRUSHED
 
 
+func cycle():
+    match state:
+        STATES.ZEROD:
+            prime()
+        STATES.PRIMED:
+            crush()
+        STATES.CRUSHED:
+            zero()
+
+
 func _unhandled_input(event):
     if event.is_action_pressed("ui_down"):
         if randi() % 2:
-            match state:
-                STATES.ZEROD:
-                    prime()
-                STATES.PRIMED:
-                    crush()
-                STATES.CRUSHED:
-                    zero()
+            cycle()

@@ -4,7 +4,7 @@
 [ext_resource path="res://Crusher.gd" type="Script" id=2]
 [ext_resource path="res://CrusherBody.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 78, 251 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -19,7 +19,7 @@ script = ExtResource( 2 )
 position = Vector2( 0, 80 )
 
 [node name="Crushed" type="Position2D" parent="."]
-position = Vector2( 0, 540 )
+position = Vector2( 0, 520 )
 
 [node name="Body" type="StaticBody2D" parent="."]
 script = ExtResource( 3 )
@@ -30,8 +30,7 @@ texture = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="Body"]
 position = Vector2( 0, -253 )
-shape = SubResource( 3 )
-disabled = true
+shape = SubResource( 1 )
 
 [node name="Killbox" type="Area2D" parent="Body"]
 
