@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scientist.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Crusher.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Console.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/robo_concept1.jpg" type="Texture" id=5]
-[ext_resource path="res://assets/bg_01.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/bg_02.jpg" type="Texture" id=6]
 [ext_resource path="res://CharacterSwitcher.gd" type="Script" id=7]
+[ext_resource path="res://assets/FG.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 180.569, 32.2353 )
@@ -65,6 +66,7 @@ position = Vector2( 952.884, 0 )
 position = Vector2( 1118.47, 0 )
 
 [node name="Consoles" type="Node2D" parent="."]
+visible = false
 
 [node name="Console" parent="Consoles" instance=ExtResource( 4 )]
 position = Vector2( 117.468, 84.9259 )
@@ -99,6 +101,7 @@ collision_mask = 4
 script = ExtResource( 7 )
 
 [node name="BotObstacles" type="Node2D" parent="."]
+visible = false
 
 [node name="Floor" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 180.887, 574.85 )
@@ -167,6 +170,7 @@ __meta__ = {
 shape = SubResource( 6 )
 
 [node name="ScientistObstacles" type="Node2D" parent="."]
+visible = false
 
 [node name="Floor" type="StaticBody2D" parent="ScientistObstacles"]
 position = Vector2( 800, 575 )
@@ -202,6 +206,7 @@ __meta__ = {
 shape = SubResource( 9 )
 
 [node name="PrototypeTODO" type="Label" parent="."]
+visible = false
 margin_left = 1325.06
 margin_top = 99.5261
 margin_right = 1500.06
@@ -219,3 +224,10 @@ __meta__ = {
 visible = false
 texture = ExtResource( 5 )
 centered = false
+
+[node name="Foreground" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
