@@ -19,6 +19,10 @@ config/name="GMTK GJ 2020"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Music="*res://Music.tscn"
+
 [display]
 
 window/size/width=1200
