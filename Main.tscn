@@ -5,15 +5,15 @@
 [ext_resource path="res://Conveyor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Console.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
-[ext_resource path="res://assets/bg_02.png" type="Texture" id=6]
+[ext_resource path="res://background/bg_02.png" type="Texture" id=6]
 [ext_resource path="res://CharacterSwitcher.gd" type="Script" id=7]
-[ext_resource path="res://assets/FG.png" type="Texture" id=8]
+[ext_resource path="res://background/FG.png" type="Texture" id=8]
 [ext_resource path="res://Overlays.gd" type="Script" id=9]
 [ext_resource path="res://Crushers.gd" type="Script" id=10]
 [ext_resource path="res://Main.gd" type="Script" id=11]
 [ext_resource path="res://Elevator.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Crusher.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/bg_alarm.png" type="Texture" id=16]
+[ext_resource path="res://background/bg_alarm.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,32 +28,32 @@ animations = [ {
 "speed": 1.33
 } ]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 180, 32 )
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 12.1095
 height = 308.269
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=4]
 height = 281.89
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 442, 300 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 20, 300 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 200, 20 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 404.936, 40 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 195, 300 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 50, 300 )
 
 [node name="Main" type="Node2D"]
@@ -147,7 +147,7 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/Floor"]
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="Floor2" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 126.436, 361.536 )
@@ -159,7 +159,7 @@ __meta__ = {
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/Floor2"]
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="Floor3" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 216, 183 )
@@ -172,7 +172,7 @@ __meta__ = {
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/Floor3"]
 position = Vector2( -2.5, -9.5 )
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="RightEdge" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 800, 300 )
@@ -183,7 +183,7 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/RightEdge"]
-shape = SubResource( 8 )
+shape = SubResource( 5 )
 
 [node name="LeftEdge" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( -20, 300 )
@@ -194,7 +194,7 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/LeftEdge"]
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 
 [node name="TopEdge" type="StaticBody2D" parent="BotObstacles"]
 position = Vector2( 170, -20 )
@@ -205,7 +205,7 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="BotObstacles/TopEdge"]
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="ScientistObstacles" type="Node2D" parent="."]
 visible = false
@@ -219,7 +219,7 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="ScientistObstacles/Floor"]
-shape = SubResource( 11 )
+shape = SubResource( 8 )
 
 [node name="LeftEdge" type="StaticBody2D" parent="ScientistObstacles"]
 position = Vector2( 200, 300 )
@@ -230,7 +230,7 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="ScientistObstacles/LeftEdge"]
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="RightEdge" type="StaticBody2D" parent="ScientistObstacles"]
 position = Vector2( 1250, 311.127 )
@@ -241,7 +241,7 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="ScientistObstacles/RightEdge"]
-shape = SubResource( 13 )
+shape = SubResource( 10 )
 
 [node name="Elevators" type="Node2D" parent="."]
 
@@ -252,6 +252,7 @@ position = Vector2( 321.274, 377.971 )
 position = Vector2( 35.6942, 190.259 )
 
 [node name="Overlays" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true,
@@ -277,6 +278,7 @@ __meta__ = {
 }
 
 [node name="Foreground" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 8 )
 centered = false
 __meta__ = {
@@ -290,9 +292,9 @@ current = true
 script = ExtResource( 5 )
 max_offset = Vector2( 10, 10 )
 max_roll = 0.01
+[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
-[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="timeout" from="Crushers/Timer" to="Crushers" method="_on_Timer_timeout"]
 [connection signal="ground_hit" from="Crushers/Crusher" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher" to="Scientist" method="_on_Crusher_killbox_hit"]
