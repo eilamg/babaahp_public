@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Scientist_Running_-_Long.ogg-3ca56cd69cd4b01f0e7ba294cd230e9b.oggstr"
+
+[deps]
+
+source_file="res://scientist/Scientist_Running_-_Long.ogg"
+dest_files=[ "res://.import/Scientist_Running_-_Long.ogg-3ca56cd69cd4b01f0e7ba294cd230e9b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

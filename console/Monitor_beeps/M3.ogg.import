@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/M3.ogg-a74962413c704390db5a60c46b503719.oggstr"
+
+[deps]
+
+source_file="res://console/Monitor_beeps/M3.ogg"
+dest_files=[ "res://.import/M3.ogg-a74962413c704390db5a60c46b503719.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

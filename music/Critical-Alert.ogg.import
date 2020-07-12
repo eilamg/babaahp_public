@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Critical-Alert.ogg-970b89865b544df7ceea766be38c6789.oggstr"
+
+[deps]
+
+source_file="res://music/Critical-Alert.ogg"
+dest_files=[ "res://.import/Critical-Alert.ogg-970b89865b544df7ceea766be38c6789.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

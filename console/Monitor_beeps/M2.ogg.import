@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/M2.ogg-46c95545c304262d9513b9f9d3bc0100.oggstr"
+
+[deps]
+
+source_file="res://console/Monitor_beeps/M2.ogg"
+dest_files=[ "res://.import/M2.ogg-46c95545c304262d9513b9f9d3bc0100.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

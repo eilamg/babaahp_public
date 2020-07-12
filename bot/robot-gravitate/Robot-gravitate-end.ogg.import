@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Robot-gravitate-end.ogg-2da20eead0a02c6d8bf7ee4746c29ed6.oggstr"
+
+[deps]
+
+source_file="res://bot/robot-gravitate/Robot-gravitate-end.ogg"
+dest_files=[ "res://.import/Robot-gravitate-end.ogg-2da20eead0a02c6d8bf7ee4746c29ed6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
