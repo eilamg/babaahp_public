@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Robot-gravitate-start.ogg-2f6a4e34eedb7df19eb5a1cf52
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -23,13 +23,39 @@ func _ready():
 
 
 func set_state(value):
+    if value == state:
+        return
     state = value
-    if get_node_or_null("Panel"):
-        $Panel.play(animations[state])
-    if get_node_or_null("Bulb"):
-        $Bulb.play(animations[state])
+    match state:
+        0:
+            if get_node_or_null("Panel"):
+                $Panel.play(animations[0])
+            if get_node_or_null("Bulb1"):
+                $Bulb1.play(animations[0])
+            if get_node_or_null("Bulb2"):
+                $Bulb2.play(animations[0])
+            if get_node_or_null("AudioLevel0"):
+                $AudioLevel0.play()
+        1:
+            if get_node_or_null("Panel"):
+                $Panel.play(animations[1])
+            if get_node_or_null("Bulb1"):
+                $Bulb1.play(animations[1])
+            if get_node_or_null("Bulb2"):
+                $Bulb2.play(animations[0])
+            if get_node_or_null("AudioLevel1"):
+                $AudioLevel1.play()
+        2:
+            if get_node_or_null("Panel"):
+                $Panel.play(animations[1])
+            if get_node_or_null("Bulb1"):
+                $Bulb1.play(animations[1])
+            if get_node_or_null("Bulb2"):
+                $Bulb2.play(animations[1])
+            if get_node_or_null("AudioLevel2"):
+                $AudioLevel2.play()
 
-
+    
 func set_blink_rate(value):
     blink_rate = value
     if get_node_or_null("Panel"):

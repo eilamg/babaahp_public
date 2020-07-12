@@ -1,6 +1,11 @@
 extends KinematicBody2D
 
 
+var elevator_start_stream = preload("res://bot/robot-gravitate/Robot-gravitate-start.ogg")
+var elevator_loop_stream = preload("res://bot/robot-gravitate/Robot-gravitate-start.ogg")
+var elevator_end_stream = preload("res://bot/robot-gravitate/Robot-gravitate-start.ogg")
+
+
 export var active = false
 export var speed = 1000
 export var gravity = 100
@@ -31,10 +36,22 @@ func _physics_process(delta):
         $Sprite.flip_h = true
     if movement.x > 0:
         $Sprite.flip_h = false
-        
+
+#    if in_elevator and $ElevatorAudio.stream == null:
+#        start_elevator_audio()
+
+    if in_elevator and active:
+        $ElevatorAudio.stream_paused = false
+    else:
+        $ElevatorAudio.stream_paused = true
     if in_elevator and movement == Vector2.ZERO:
         movement.x += rand_range(-10, 10)
         movement.y += rand_range(-10, 10)
+    
+    if movement.x != 0:
+        $MoveAudio.stream_paused = false
+    else:
+        $MoveAudio.stream_paused = true
     
     move_and_slide(movement)
 
@@ -66,3 +83,17 @@ func _on_console_entered(console):
 func _on_console_exited(console):
     # prints('bot exited console', console, console.number)
     on_console = null
+
+#
+#func _on_ElevatorAudio_finished():
+#    print('end stream')
+#    if $ElevatorAudio.stream == elevator_start_stream:
+#        print('starting next stream')
+#        $ElevatorAudio.set_stream(elevator_loop_stream)
+#        print($ElevatorAudio.stream)
+#        $ElevatorAudio.play()
+#
+#
+#func start_elevator_audio():
+#    $ElevatorAudio.stream = elevator_start_stream
+#    $ElevatorAudio.play()

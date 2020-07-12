@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/conveyor2.ogg-ef912e823f88570c8e33354bdfe9304c.oggstr"
+
+[deps]
+
+source_file="res://conveyor/conveyor2.ogg"
+dest_files=[ "res://.import/conveyor2.ogg-ef912e823f88570c8e33354bdfe9304c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

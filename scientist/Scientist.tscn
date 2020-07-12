@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scientist/run/run_01.png" type="Texture" id=1]
 [ext_resource path="res://scientist/Scientist.gd" type="Script" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://scientist/death/death_01.png" type="Texture" id=32]
 [ext_resource path="res://scientist/death/death_09.png" type="Texture" id=33]
 [ext_resource path="res://scientist/death/death_08.png" type="Texture" id=34]
+[ext_resource path="res://scientist/Scientist_Running_-_Short.ogg" type="AudioStream" id=35]
+[ext_resource path="res://scientist/Death.ogg" type="AudioStream" id=36]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -71,7 +73,7 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "death"
+animation = "idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
@@ -80,3 +82,11 @@ shape = SubResource( 2 )
 position = Vector2( 0, -34 )
 shape = SubResource( 3 )
 disabled = true
+
+[node name="RunningAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 35 )
+volume_db = 5.0
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 36 )
+volume_db = 5.0

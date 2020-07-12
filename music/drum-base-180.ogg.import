@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/drum-base-180.ogg-fda6695f13249957bb9982bd6846bd96.oggstr"
+
+[deps]
+
+source_file="res://music/drum-base-180.ogg"
+dest_files=[ "res://.import/drum-base-180.ogg-fda6695f13249957bb9982bd6846bd96.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

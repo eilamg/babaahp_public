@@ -51,6 +51,6 @@ func _on_Timer_timeout():
 func _on_danger_level_changed(index, value):
     if index == number:
         # prints('crusher', number, 'intercepted danger level change to', value)
-        $Timer.wait_time = timings[value]
+        $Timer.wait_time = timings[value] * rand_range(0.9, 1.1)
         $AnimationPlayer.playback_speed = animation_speeds[value]
         $Body/Sprite.use_parent_material = (value != 2) # TODO: this shouldn't be hardcoded

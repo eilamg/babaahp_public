@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 
+signal scientist_died
+
+
 export var active = true
 export var speed = 1000
 export var gravity = 100
@@ -33,9 +36,14 @@ func _physics_process(delta):
         $AnimatedSprite.flip_h = movement.x < 0
         if not(is_jumping) and not(dead):
             $AnimatedSprite.play("run")
+            if not $RunningAudio.playing:
+                $RunningAudio.play()
     else:
+        if $RunningAudio.playing:
+            $RunningAudio.stop()
         if not(is_jumping) and not(dead):
             $AnimatedSprite.play("idle")
+
             
     move_and_slide(movement, Vector2.UP)
     
@@ -59,8 +67,11 @@ func _on_Crusher_killbox_hit(body):
 
 func die():
     dead = true
+    $RunningAudio.stop()
+    $DeathAudio.play(0.2)
     $Collision.set_deferred("disabled", true)
     $DeadCollision.set_deferred("disabled", false)
     $AnimatedSprite.set_animation("death")
     $AnimatedSprite.playing = false
     $AnimatedSprite.set_frame(0)
+    emit_signal("scientist_died")
