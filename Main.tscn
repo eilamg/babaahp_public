@@ -83,6 +83,10 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
+[node name="DangerTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [node name="CharacterSwitcher" type="Node" parent="."]
 script = ExtResource( 7 )
 
@@ -99,6 +103,7 @@ __meta__ = {
 position = Vector2( 800, 260 )
 frames = SubResource( 2 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Conveyor" parent="." instance=ExtResource( 3 )]
@@ -327,6 +332,7 @@ max_roll = 0.01
 [connection signal="danger_level_changed" from="." to="Consoles/Console" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Conveyor" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Consoles/Console4" method="_on_danger_level_changed"]
+[connection signal="timeout" from="DangerTimer" to="." method="_on_DangerTimer_timeout"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]

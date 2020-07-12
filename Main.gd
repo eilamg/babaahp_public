@@ -68,9 +68,20 @@ func init_crushers():
         i += 1
 
 
+func increase_random_danger_level():
+    increase_danger_level(randi() % 6)
+
+
+
 func _unhandled_input(event):
     if event.is_action_pressed("reset"):
         get_tree().reload_current_scene()
 
     if event.is_action_pressed("debug"):
-        increase_danger_level(randi() % 6)
+        increase_random_danger_level()
+
+
+func _on_DangerTimer_timeout():
+    increase_random_danger_level()
+    
+    
