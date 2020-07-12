@@ -1,31 +1,53 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scientist/Scientist.tscn" type="PackedScene" id=1]
 [ext_resource path="res://bot/Bot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://conveyor/Conveyor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://console/Console.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
-[ext_resource path="res://background/bg_02.png" type="Texture" id=6]
+[ext_resource path="res://background/bg_03.png" type="Texture" id=6]
 [ext_resource path="res://CharacterSwitcher.gd" type="Script" id=7]
 [ext_resource path="res://background/FG.png" type="Texture" id=8]
 [ext_resource path="res://Overlays.gd" type="Script" id=9]
 [ext_resource path="res://Crushers.gd" type="Script" id=10]
 [ext_resource path="res://Main.gd" type="Script" id=11]
 [ext_resource path="res://Elevator.tscn" type="PackedScene" id=12]
+[ext_resource path="res://background/bg_alarm2.png" type="Texture" id=13]
 [ext_resource path="res://crusher/Crusher.tscn" type="PackedScene" id=14]
-[ext_resource path="res://background/bg_alarm.png" type="Texture" id=16]
+[ext_resource path="res://face/PC_win1.png" type="Texture" id=15]
+[ext_resource path="res://face/PC_win2.png" type="Texture" id=16]
+[ext_resource path="res://face/PC1.png" type="Texture" id=17]
+[ext_resource path="res://face/PC2.png" type="Texture" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": false,
-"name": "idle",
+"name": "blue",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 13 ) ],
+"loop": false,
+"name": "red",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "blinking",
 "speed": 1.33
+} ]
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "idle",
+"speed": 0.25
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "win",
+"speed": 4.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -67,12 +89,19 @@ script = ExtResource( 7 )
 
 [node name="Background" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle"
+animation = "blue"
 playing = true
 centered = false
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Face" type="AnimatedSprite" parent="."]
+position = Vector2( 800, 260 )
+frames = SubResource( 11 )
+animation = "idle"
+frame = 1
+playing = true
 
 [node name="Conveyor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 800, 530 )
