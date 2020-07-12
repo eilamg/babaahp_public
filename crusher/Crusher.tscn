@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://crusher/Crusher.gd" type="Script" id=1]
 [ext_resource path="res://crusher/leg5.png" type="Texture" id=2]
@@ -9,6 +9,73 @@
 [ext_resource path="res://crusher/shadow.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000359893, 0.45, 0.9, 1.45, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 0.3, 0.4, 1.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 165 ), Vector2( 0, 4 ), Vector2( 0, 524 ), Vector2( 0, 524 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Killbox/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.45, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_hit_ground"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.45, 0.9, 1.45, 1.8 ),
+"transitions": PoolRealArray( 1, 0.3, 0.4, 1.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0 ), Vector2( 0.5, 0 ), Vector2( 0.5, 0.125 ), Vector2( 0.5, 0 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Shadow:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.45, 0.9, 1.45, 1.8 ),
+"transitions": PoolRealArray( 1, 0.3, 0.4, 1.5, 1 ),
+"update": 0,
+"values": [ Color( 0.572549, 0.619608, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 0.798847, 0.820992, 1, 0.529412 ), Color( 0.937255, 0.945098, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "crush (copy)"
 length = 4.17
 step = 0.05
 tracks/0/type = "value"
@@ -74,8 +141,7 @@ tracks/4/keys = {
 "values": [ Color( 0.572549, 0.619608, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 0.798847, 0.820992, 1, 0.529412 ), Color( 0.937255, 0.945098, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "return"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:position")
 tracks/0/interp = 1
@@ -110,10 +176,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1.9, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0 ) ]
 }
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 
 
@@ -128,19 +194,19 @@ void fragment() {
 }"
 custom_defines = ""
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 4 )
 shader_param/tint = Color( 0.996078, 0, 0, 1 )
 shader_param/factor = 0.333
-shader_param/tex = SubResource( 8 )
+shader_param/tex = SubResource( 6 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
@@ -148,7 +214,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 69, 11.5 )
 
 [node name="Crusher" type="Node2D"]
@@ -160,21 +226,22 @@ wait_time = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/crush = SubResource( 1 )
-anims/return = SubResource( 2 )
+"anims/crush (copy)" = SubResource( 2 )
+anims/return = SubResource( 3 )
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0.572549, 0.619608, 1, 0 )
-position = Vector2( 0, 529 )
-scale = Vector2( 3.31137e-08, 3.31137e-08 )
+position = Vector2( 0, 531.973 )
+scale = Vector2( 0.5, 1e-05 )
 texture = ExtResource( 8 )
 
 [node name="Body" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite" parent="Body"]
-material = SubResource( 6 )
+material = SubResource( 7 )
 use_parent_material = true
 position = Vector2( 0, -253 )
-frames = SubResource( 3 )
+frames = SubResource( 8 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Body"]
 visible = false
@@ -185,7 +252,7 @@ polygon = PoolVector2Array( -64.0707, 183.508, -64.9615, 259.235, 64.2188, 259.2
 visible = false
 
 [node name="Collision" type="CollisionShape2D" parent="Body/Killbox"]
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 disabled = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

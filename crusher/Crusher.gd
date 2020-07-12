@@ -7,7 +7,7 @@ signal ground_hit
 
 
 export(Array, float) var animation_speeds = [1.0, 1.25, 1.5]
-export(Array, float) var timings = [2.0, 1.0, 0.1]
+export(Array, float) var timings = [8.0, 4.0, 2.0]
 export(int, 1, 5) var number setget set_number
 
 
@@ -24,6 +24,7 @@ func crush():
         
 func start_with_delay(delay):
     yield(get_tree().create_timer(delay), "timeout")
+    crush()
     $Timer.start()
 
 

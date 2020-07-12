@@ -84,7 +84,7 @@ __meta__ = {
 }
 
 [node name="DangerTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
 
 [node name="CharacterSwitcher" type="Node" parent="."]
@@ -133,26 +133,26 @@ number = 5
 [node name="Consoles" type="Node2D" parent="."]
 
 [node name="Console" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 163.411, 79.8926 )
+position = Vector2( 161.729, 79.0517 )
 
 [node name="Console2" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 84.9951, 444.485 )
+position = Vector2( 90.6647, 445.745 )
 number = 2
 
 [node name="Console3" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 125.783, 260.871 )
+position = Vector2( 129.038, 264.651 )
 number = 3
 
 [node name="Console4" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 298.063, 64.1113 )
+position = Vector2( 282.086, 78.4065 )
 number = 4
 
 [node name="Console5" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 236.148, 262.431 )
+position = Vector2( 237.919, 265.814 )
 number = 5
 
 [node name="Console6" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 219.068, 440.342 )
+position = Vector2( 214.658, 444.122 )
 number = 0
 
 [node name="Scientist" parent="." instance=ExtResource( 1 )]
@@ -320,18 +320,18 @@ current = true
 script = ExtResource( 5 )
 max_offset = Vector2( 10, 10 )
 max_roll = 0.01
-[connection signal="danger_level_changed" from="." to="Consoles/Console5" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Crushers/Crusher2" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher3" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher4" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher5" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console2" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Crushers/Crusher" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console6" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console3" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console2" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console5" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Consoles/Console" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Conveyor" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher4" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console3" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Consoles/Console4" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher5" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher3" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console6" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Conveyor" method="_on_danger_level_changed"]
 [connection signal="timeout" from="DangerTimer" to="." method="_on_DangerTimer_timeout"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
