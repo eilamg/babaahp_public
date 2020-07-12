@@ -102,28 +102,26 @@ position = Vector2( 1130.47, 0 )
 [node name="Consoles" type="Node2D" parent="."]
 
 [node name="Console" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 123.768, 85.5559 )
+position = Vector2( 163.411, 79.8926 )
 
 [node name="Console2" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 213.997, 83.9936 )
-activated = true
+position = Vector2( 84.9951, 444.485 )
+number = 2
 
 [node name="Console3" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 308.938, 85.7197 )
+position = Vector2( 125.783, 260.871 )
+number = 3
 
 [node name="Console4" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 131.566, 261.722 )
+position = Vector2( 298.063, 64.1113 )
+number = 4
 
 [node name="Console5" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 232.554, 261.127 )
-activated = true
+position = Vector2( 236.148, 262.431 )
+number = 5
 
 [node name="Console6" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 72.8727, 452.418 )
-activated = true
-
-[node name="Console7" parent="Consoles" instance=ExtResource( 4 )]
-position = Vector2( 210.132, 451.032 )
+position = Vector2( 219.068, 440.342 )
 
 [node name="Scientist" parent="." instance=ExtResource( 1 )]
 position = Vector2( 807.959, 463.335 )
@@ -131,7 +129,7 @@ collision_mask = 2
 speed = 500
 
 [node name="Bot" parent="." instance=ExtResource( 2 )]
-position = Vector2( 173.636, 296.953 )
+position = Vector2( 153.454, 305.362 )
 collision_mask = 4
 speed = 500
 
@@ -252,7 +250,6 @@ position = Vector2( 321.274, 377.971 )
 position = Vector2( 35.6942, 190.259 )
 
 [node name="Overlays" type="Node2D" parent="."]
-visible = false
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true,
@@ -278,7 +275,6 @@ __meta__ = {
 }
 
 [node name="Foreground" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 8 )
 centered = false
 __meta__ = {
@@ -292,9 +288,9 @@ current = true
 script = ExtResource( 5 )
 max_offset = Vector2( 10, 10 )
 max_roll = 0.01
+[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
-[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="timeout" from="Crushers/Timer" to="Crushers" method="_on_Timer_timeout"]
 [connection signal="ground_hit" from="Crushers/Crusher" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher" to="Scientist" method="_on_Crusher_killbox_hit"]
