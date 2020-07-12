@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Scientist.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Bot.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Conveyor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Console.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scientist/Scientist.tscn" type="PackedScene" id=1]
+[ext_resource path="res://bot/Bot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://conveyor/Conveyor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://console/Console.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://background/bg_02.png" type="Texture" id=6]
 [ext_resource path="res://CharacterSwitcher.gd" type="Script" id=7]
@@ -12,7 +12,7 @@
 [ext_resource path="res://Crushers.gd" type="Script" id=10]
 [ext_resource path="res://Main.gd" type="Script" id=11]
 [ext_resource path="res://Elevator.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Crusher.tscn" type="PackedScene" id=14]
+[ext_resource path="res://crusher/Crusher.tscn" type="PackedScene" id=14]
 [ext_resource path="res://background/bg_alarm.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -292,9 +292,9 @@ current = true
 script = ExtResource( 5 )
 max_offset = Vector2( 10, 10 )
 max_roll = 0.01
-[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="timeout" from="Crushers/Timer" to="Crushers" method="_on_Timer_timeout"]
 [connection signal="ground_hit" from="Crushers/Crusher" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher" to="Scientist" method="_on_Crusher_killbox_hit"]

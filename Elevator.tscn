@@ -8,7 +8,7 @@ extents = Vector2( 26, 150 )
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Container" type="Control" parent="."]
+[node name="Control" type="Control" parent="."]
 margin_left = -26.0
 margin_top = -150.0
 margin_right = 26.0
@@ -18,7 +18,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ParticlesDown" type="CPUParticles2D" parent="Container"]
+[node name="ParticlesDown" type="CPUParticles2D" parent="Control"]
 position = Vector2( 26, 150 )
 amount = 32
 emission_shape = 2
@@ -30,7 +30,7 @@ color = Color( 1, 0.968627, 0.270588, 0.501961 )
 hue_variation = 0.2
 hue_variation_random = 0.2
 
-[node name="ParticlesUP" type="CPUParticles2D" parent="Container"]
+[node name="ParticlesUP" type="CPUParticles2D" parent="Control"]
 position = Vector2( 26, 150 )
 rotation = 3.14159
 amount = 32
