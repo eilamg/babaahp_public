@@ -28,8 +28,10 @@ func init_danger_levels():
 
 
 func set_danger_level(index, value):
-    if value > max_danger_level:
-        value = 0
+    value = clamp(value, 0, max_danger_level)
+    # if value > max_danger_level:
+    #     value = 0
+    
     danger_levels[index] = value
     emit_signal("danger_level_changed", index, value)
     print(danger_levels)
@@ -38,6 +40,11 @@ func set_danger_level(index, value):
 
 func increase_danger_level(index):
     set_danger_level(index, danger_levels[index] + 1)
+    
+
+func decrease_danger_level(index):
+    set_danger_level(index, danger_levels[index] - 1)
+    
 
 
 func init_consoles():

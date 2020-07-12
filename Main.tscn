@@ -99,7 +99,6 @@ __meta__ = {
 position = Vector2( 800, 260 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Conveyor" parent="." instance=ExtResource( 3 )]
@@ -316,20 +315,20 @@ current = true
 script = ExtResource( 5 )
 max_offset = Vector2( 10, 10 )
 max_roll = 0.01
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher5" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher4" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher3" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher2" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Conveyor" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console2" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console3" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console4" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Consoles/Console5" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher2" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher3" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher4" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher5" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console2" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Consoles/Console6" method="_on_danger_level_changed"]
-[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console3" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Conveyor" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console4" method="_on_danger_level_changed"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="ground_hit" from="Crushers/Crusher" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher" to="Scientist" method="_on_Crusher_killbox_hit"]
@@ -341,6 +340,18 @@ max_roll = 0.01
 [connection signal="killbox_hit" from="Crushers/Crusher4" to="Scientist" method="_on_Crusher_killbox_hit"]
 [connection signal="ground_hit" from="Crushers/Crusher5" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher5" to="Scientist" method="_on_Crusher_killbox_hit"]
+[connection signal="console_entered" from="Consoles/Console" to="Bot" method="_on_console_entered"]
+[connection signal="console_exited" from="Consoles/Console" to="Bot" method="_on_console_exited"]
+[connection signal="console_entered" from="Consoles/Console2" to="Bot" method="_on_console_entered"]
+[connection signal="console_exited" from="Consoles/Console2" to="Bot" method="_on_console_exited"]
+[connection signal="console_entered" from="Consoles/Console3" to="Bot" method="_on_console_entered"]
+[connection signal="console_exited" from="Consoles/Console3" to="Bot" method="_on_console_exited"]
+[connection signal="console_entered" from="Consoles/Console4" to="Bot" method="_on_console_entered"]
+[connection signal="console_exited" from="Consoles/Console4" to="Bot" method="_on_console_exited"]
+[connection signal="console_entered" from="Consoles/Console5" to="Bot" method="_on_console_entered"]
+[connection signal="console_exited" from="Consoles/Console5" to="Bot" method="_on_console_exited"]
+[connection signal="console_entered" from="Consoles/Console6" to="Bot" method="_on_console_entered"]
+[connection signal="console_exited" from="Consoles/Console6" to="Bot" method="_on_console_exited"]
 [connection signal="body_entered" from="Elevators/Elevator" to="Bot" method="_on_entered_elevator"]
 [connection signal="body_exited" from="Elevators/Elevator" to="Bot" method="_on_exited_elevator"]
 [connection signal="body_entered" from="Elevators/Elevator2" to="Bot" method="_on_entered_elevator"]

@@ -2,6 +2,10 @@ tool
 extends Node2D
 
 
+signal console_entered
+signal console_exited
+
+
 enum STATES {OFF, ON, BLINKING}
 export(STATES) var state = STATES.OFF setget set_state
 # export(String, "off", "on", "blinking") var state setget set_state
@@ -47,3 +51,11 @@ func _on_danger_level_changed(index, value):
     if index == number:
         # prints('console', number, 'intercepted level change to', value)
         set_state(value)
+
+
+func _on_Area2D_body_entered(body):
+    emit_signal("console_entered", self)
+
+
+func _on_Area2D_body_exited(body):
+    emit_signal("console_exited", self)

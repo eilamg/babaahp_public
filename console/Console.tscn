@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://console/Console.gd" type="Script" id=2]
 [ext_resource path="res://console/panel_on.png" type="Texture" id=3]
@@ -16,14 +16,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "on",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "on",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -39,14 +39,14 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "on",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "on",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -68,22 +68,37 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 25.0547, 24.2833 )
+
 [node name="Console" type="Node2D"]
 script = ExtResource( 2 )
+blink_rate = 2.0
 
 [node name="Panel" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 20.6844 )
 frames = SubResource( 1 )
 animation = "off"
+speed_scale = 2.0
 playing = true
 
 [node name="Bulb" type="AnimatedSprite" parent="."]
 position = Vector2( -0.44545, -17.1022 )
 frames = SubResource( 2 )
 animation = "off"
+speed_scale = 2.0
 playing = true
 
 [node name="Number" type="AnimatedSprite" parent="."]
 position = Vector2( -54.1789, 21.4539 )
 frames = SubResource( 3 )
 frame = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="Collision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1.52588e-05, 21.3268 )
+shape = SubResource( 4 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
