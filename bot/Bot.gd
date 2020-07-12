@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 
+signal use_button_pressed
+
+
 export var active = false
 export var speed = 1000
 export var gravity = 100
@@ -30,8 +33,17 @@ func _physics_process(delta):
         $Sprite.flip_h = true
     if movement.x > 0:
         $Sprite.flip_h = false
+        
+    if in_elevator and movement == Vector2.ZERO:
+        movement.x += rand_range(-10, 10)
+        movement.y += rand_range(-10, 10)
     
     move_and_slide(movement)
+
+
+func _unhandled_input(event):
+    if active and not(in_elevator) and event.is_action_pressed("up"):
+        emit_signal("use_button_pressed")
 
 
 func _on_character_switched():
