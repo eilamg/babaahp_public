@@ -4,7 +4,7 @@
 [ext_resource path="res://conveyor/belt.png" type="Texture" id=2]
 [ext_resource path="res://conveyor/VanishingPoint.gd" type="Script" id=52]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 408, 18 )
 
 [node name="Conveyor" type="StaticBody2D"]
@@ -16,7 +16,7 @@ texture = ExtResource( 2 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 14.254 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Control" type="Control" parent="."]
 margin_left = -402.0

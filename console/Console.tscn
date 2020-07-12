@@ -14,7 +14,7 @@
 [ext_resource path="res://console/num_5.png" type="Texture" id=13]
 [ext_resource path="res://console/bulb_on.png" type="Texture" id=14]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -26,18 +26,18 @@ animations = [ {
 "name": "off",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "blinking",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "fried",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "blinking",
+"speed": 1.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
@@ -49,18 +49,18 @@ animations = [ {
 "name": "off",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "blinking",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "fried",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "blinking",
+"speed": 1.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 13 ) ],
 "loop": true,
@@ -70,21 +70,20 @@ animations = [ {
 
 [node name="Console" type="Node2D"]
 script = ExtResource( 2 )
-state = "off"
 
 [node name="Panel" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 20.6844 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "off"
 playing = true
 
 [node name="Bulb" type="AnimatedSprite" parent="."]
 position = Vector2( -0.44545, -17.1022 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "off"
 playing = true
 
 [node name="Number" type="AnimatedSprite" parent="."]
 position = Vector2( -54.1789, 21.4539 )
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 frame = 1

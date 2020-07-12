@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://crusher/Crusher.gd" type="Script" id=1]
 [ext_resource path="res://crusher/leg5.png" type="Texture" id=2]
@@ -113,7 +113,34 @@ tracks/2/keys = {
 "values": [ Vector2( 0.5, 0.5 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+
+uniform vec4 tint : hint_color;
+uniform float factor : hint_range(0, 1);
+uniform sampler2D tex;
+
+
+void fragment() {
+    COLOR = texture(TEXTURE, UV);
+    COLOR.rgb = COLOR.rgb + tint.rgb * factor * texture(tex, UV.yx).a;
+}"
+custom_defines = ""
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/tint = Color( 0.996078, 0, 0, 1 )
+shader_param/factor = 0.333
+shader_param/tex = SubResource( 8 )
+
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
@@ -121,12 +148,15 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 69, 11.5 )
 
 [node name="Crusher" type="Node2D"]
 script = ExtResource( 1 )
 number = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/crush = SubResource( 1 )
@@ -141,17 +171,22 @@ texture = ExtResource( 8 )
 [node name="Body" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite" parent="Body"]
+material = SubResource( 6 )
+use_parent_material = true
 position = Vector2( 0, -253 )
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Body"]
+visible = false
 position = Vector2( 0, -253 )
 polygon = PoolVector2Array( -64.0707, 183.508, -64.9615, 259.235, 64.2188, 259.235, 63.3279, 182.617, 33.9282, -65.9435, 35.1352, -267.578, -44.5417, -265.199, -41.5036, -66.0912, -41.5036, -66.0912 )
 
 [node name="Killbox" type="Area2D" parent="Body"]
+visible = false
 
 [node name="Collision" type="CollisionShape2D" parent="Body/Killbox"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 disabled = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Body/Killbox" to="." method="_on_Killbox_body_entered"]
