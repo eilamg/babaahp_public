@@ -129,3 +129,4 @@ debug={
 
 2d_physics/layer_2="scientist_obstacles"
 2d_physics/layer_3="bot_obstacles"
+2d_physics/layer_4="consoles"
