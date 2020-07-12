@@ -89,15 +89,19 @@ position = Vector2( 466.81, 0 )
 
 [node name="Crusher2" parent="Crushers" instance=ExtResource( 14 )]
 position = Vector2( 630.541, 0 )
+number = 2
 
 [node name="Crusher3" parent="Crushers" instance=ExtResource( 14 )]
 position = Vector2( 795.042, 0 )
+number = 3
 
 [node name="Crusher4" parent="Crushers" instance=ExtResource( 14 )]
 position = Vector2( 963.285, 0 )
+number = 4
 
 [node name="Crusher5" parent="Crushers" instance=ExtResource( 14 )]
 position = Vector2( 1130.47, 0 )
+number = 5
 
 [node name="Consoles" type="Node2D" parent="."]
 
@@ -289,8 +293,8 @@ script = ExtResource( 5 )
 max_offset = Vector2( 10, 10 )
 max_roll = 0.01
 [connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
-[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="timeout" from="Crushers/Timer" to="Crushers" method="_on_Timer_timeout"]
 [connection signal="ground_hit" from="Crushers/Crusher" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher" to="Scientist" method="_on_Crusher_killbox_hit"]
