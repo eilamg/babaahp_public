@@ -102,5 +102,5 @@ func _on_DangerTimer_timeout():
 
 func _on_scientist_died():
     $Face.set_animation("lose")
-    yield(get_tree().create_timer(2), "timeout")
+    yield(get_tree().create_timer(1), "timeout")
     $CanvasLayer/GameOver.play("game_over")

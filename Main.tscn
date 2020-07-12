@@ -64,7 +64,7 @@ font_data = ExtResource( 20 )
 
 [sub_resource type="Animation" id=18]
 resource_name = "game_over"
-length = 1.1
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameOver/Sprite:position")
 tracks/0/interp = 2
@@ -72,7 +72,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 1.1 ),
+"times": PoolRealArray( 0.1, 0.5 ),
 "transitions": PoolRealArray( 0.378929, 1 ),
 "update": 0,
 "values": [ Vector2( 800, 800 ), Vector2( 800, 300 ) ]
@@ -473,6 +473,7 @@ visible = false
 position = Vector2( 800, 260 )
 frames = SubResource( 2 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Conveyor" parent="." instance=ExtResource( 3 )]
@@ -692,22 +693,22 @@ max_roll = 0.01
 
 [node name="SwitchAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-[connection signal="danger_level_changed" from="." to="Consoles/Console3" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console4" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console6" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Consoles/Console" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Conveyor" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Crushers/Crusher2" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console5" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console2" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Crushers/Crusher" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher3" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console3" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console2" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Crushers/Crusher4" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console6" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console4" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Crushers/Crusher5" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console5" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher3" method="_on_danger_level_changed"]
 [connection signal="timeout" from="DangerTimer" to="." method="_on_DangerTimer_timeout"]
-[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
-[connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
 [connection signal="scientist_died" from="Scientist" to="." method="_on_scientist_died"]
 [connection signal="ground_hit" from="Crushers/Crusher" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher" to="Scientist" method="_on_Crusher_killbox_hit"]

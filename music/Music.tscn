@@ -12,6 +12,7 @@ script = ExtResource( 4 )
 [node name="Drums" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -10.0
+autoplay = true
 bus = "Music"
 
 [node name="Drums180" type="AudioStreamPlayer" parent="."]

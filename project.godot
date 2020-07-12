@@ -134,3 +134,7 @@ mute_music={
 2d_physics/layer_3="bot_obstacles"
 2d_physics/layer_4="consoles"
 2d_physics/layer_5="crushers"
+
+[rendering]
+
+environment/default_clear_color=Color( 0.00392157, 0.0235294, 0.101961, 1 )
