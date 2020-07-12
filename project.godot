@@ -27,7 +27,6 @@ Music="*res://music/Music.tscn"
 
 window/size/width=1200
 window/size/resizable=false
-window/size/always_on_top=true
 
 [input]
 
@@ -130,3 +129,4 @@ debug={
 2d_physics/layer_2="scientist_obstacles"
 2d_physics/layer_3="bot_obstacles"
 2d_physics/layer_4="consoles"
+2d_physics/layer_5="crushers"

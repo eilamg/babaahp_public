@@ -10,10 +10,12 @@ var movement = Vector2.ZERO
 var can_jump = true
 var is_jumping = false
 
+var dead = false
+
 
 func _physics_process(delta):
     movement.x = 0
-    if active:
+    if active and not dead:
         if Input.is_action_pressed("move_left"):
             movement.x -= speed
         if Input.is_action_pressed("move_right"):
@@ -29,10 +31,10 @@ func _physics_process(delta):
     
     if movement.x != 0:
         $AnimatedSprite.flip_h = movement.x < 0
-        if not(is_jumping):
+        if not(is_jumping) and not(dead):
             $AnimatedSprite.play("run")
     else:
-        if not(is_jumping):
+        if not(is_jumping) and not(dead):
             $AnimatedSprite.play("idle")
             
     move_and_slide(movement, Vector2.UP)
@@ -40,6 +42,10 @@ func _physics_process(delta):
     if is_on_floor():
         can_jump = true
         is_jumping = false
+        
+    if dead and not($DeadCollision.disabled) and position.y >= 530:  # HACK
+        $AnimatedSprite.playing = true
+        set_physics_process(false)
 
 
 func _on_character_switched():
@@ -47,5 +53,14 @@ func _on_character_switched():
 
 
 func _on_Crusher_killbox_hit(body):
-    if body == self:
-        queue_free()
+    if body == self and not(dead):
+        die()
+
+
+func die():
+    dead = true
+    $Collision.set_deferred("disabled", true)
+    $DeadCollision.set_deferred("disabled", false)
+    $AnimatedSprite.set_animation("death")
+    $AnimatedSprite.playing = false
+    $AnimatedSprite.set_frame(0)

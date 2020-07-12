@@ -103,11 +103,15 @@ __meta__ = {
 position = Vector2( 800, 260 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Conveyor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 800, 530 )
+
+[node name="Scientist" parent="." instance=ExtResource( 1 )]
+position = Vector2( 807.959, 463.335 )
+collision_mask = 2
+speed = 500
 
 [node name="Crushers" type="Node2D" parent="."]
 
@@ -154,11 +158,6 @@ number = 5
 [node name="Console6" parent="Consoles" instance=ExtResource( 4 )]
 position = Vector2( 214.658, 444.122 )
 number = 0
-
-[node name="Scientist" parent="." instance=ExtResource( 1 )]
-position = Vector2( 807.959, 463.335 )
-collision_mask = 2
-speed = 500
 
 [node name="Bot" parent="." instance=ExtResource( 2 )]
 position = Vector2( 153.454, 305.362 )
@@ -320,22 +319,22 @@ current = true
 script = ExtResource( 5 )
 max_offset = Vector2( 10, 10 )
 max_roll = 0.01
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher2" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Crushers/Crusher" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console2" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console5" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher4" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console3" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console4" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher5" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Crushers/Crusher3" method="_on_danger_level_changed"]
-[connection signal="danger_level_changed" from="." to="Consoles/Console6" method="_on_danger_level_changed"]
 [connection signal="danger_level_changed" from="." to="Conveyor" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher2" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher4" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher5" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console4" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console3" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console2" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console6" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Crushers/Crusher3" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console" method="_on_danger_level_changed"]
+[connection signal="danger_level_changed" from="." to="Consoles/Console5" method="_on_danger_level_changed"]
 [connection signal="timeout" from="DangerTimer" to="." method="_on_DangerTimer_timeout"]
-[connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
-[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
 [connection signal="character_switched" from="CharacterSwitcher" to="Overlays" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Scientist" method="_on_character_switched"]
+[connection signal="character_switched" from="CharacterSwitcher" to="Bot" method="_on_character_switched"]
 [connection signal="ground_hit" from="Crushers/Crusher" to="Camera" method="_on_Crusher_ground_hit"]
 [connection signal="killbox_hit" from="Crushers/Crusher" to="Scientist" method="_on_Crusher_killbox_hit"]
 [connection signal="ground_hit" from="Crushers/Crusher2" to="Camera" method="_on_Crusher_ground_hit"]
