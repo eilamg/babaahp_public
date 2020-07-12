@@ -1,5 +1,6 @@
 [gd_scene load_steps=18 format=2]
 
+[ext_resource path="res://console/num_H.png" type="Texture" id=1]
 [ext_resource path="res://console/Console.gd" type="Script" id=2]
 [ext_resource path="res://console/panel_on.png" type="Texture" id=3]
 [ext_resource path="res://console/num_2.png" type="Texture" id=4]
@@ -8,7 +9,6 @@
 [ext_resource path="res://console/num_1.png" type="Texture" id=7]
 [ext_resource path="res://console/bulb_off.png" type="Texture" id=8]
 [ext_resource path="res://console/bulb_fried.png" type="Texture" id=9]
-[ext_resource path="res://console/num_6.png" type="Texture" id=10]
 [ext_resource path="res://console/num_4.png" type="Texture" id=11]
 [ext_resource path="res://console/panel_off.png" type="Texture" id=12]
 [ext_resource path="res://console/num_5.png" type="Texture" id=13]
@@ -62,7 +62,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -90,7 +90,7 @@ speed_scale = 2.0
 playing = true
 
 [node name="Number" type="AnimatedSprite" parent="."]
-position = Vector2( -54.1789, 21.4539 )
+position = Vector2( -51.5724, 7.19953 )
 frames = SubResource( 3 )
 frame = 1
 

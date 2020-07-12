@@ -16,9 +16,10 @@ export(int, 0, 5) var number = 1 setget set_number
 
 
 func _ready():
-    if not(Engine.is_editor_hint()):
-        if $Number:
-            $Number.position += Vector2(rand_range(-5, 5), rand_range(-10, 10))
+    pass
+    # if not(Engine.is_editor_hint()):
+    #     if $Number:
+    #         $Number.position += Vector2(rand_range(-5, 5), rand_range(-10, 10))
 
 
 func set_state(value):
