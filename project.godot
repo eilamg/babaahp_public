@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GMTK GJ 2020"
+config/name="Between a Bot and a Hard Place"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
