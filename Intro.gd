@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 
 var current_screen = 0
@@ -6,7 +6,7 @@ var current_screen = 0
 
 func advance():
     current_screen += 1
-    
+
     match current_screen:
         1:
             $Intro1.visible = false
