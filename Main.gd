@@ -48,15 +48,15 @@ func set_danger_level(index, value):
     else:
         $Background.play("blue")
         Music.switch_to("drums")
-        
+
 
 func increase_danger_level(index):
     set_danger_level(index, danger_levels[index] + 1)
-    
+
 
 func decrease_danger_level(index):
     set_danger_level(index, danger_levels[index] - 1)
-    
+
 
 
 func init_consoles():
@@ -71,7 +71,7 @@ func init_consoles():
 func init_crushers():
     for crusher in $Crushers.get_children():
         crushers[crusher.number] = crusher
-        
+
     var numbers = range(1, 6)
     numbers.shuffle()
     var i = 1
@@ -97,7 +97,7 @@ func _unhandled_input(event):
 
 
 func _on_DangerTimer_timeout():
-    increase_random_danger_level()    
+    increase_random_danger_level()
 
 
 func _on_scientist_died():
